@@ -1,7 +1,7 @@
 /*
 /* --------------------------------
 
-DB Fiddle Link: ______________
+DB Fiddle Link:https://www.db-fiddle.com/f/bRjECEC76H1E1kDQCVWyqC/11
 ----------------------------------*/
 
 /*----------------------------------
@@ -34,35 +34,78 @@ Helper Functions (Test them in postman)
 ----------------------------------*/
 
 //-------------------------------------
-//📊 suggestions Helper Functions
+//📊 Suggestions Helper Functions
 //-------------------------------------
+//1. *GET /get-all-suggestions
+async function getAllSuggestions() {
+  const data = await db.query("Select * FROM suggestions");
+  return data.rows;
+}
 
-//Example
-// 1. *GET /get-newest-user
-// async function getNewestUser() {
-//   // db.query() lets us query the SQL database
-//   // It takes in one parameter: a SQL query!
-//   const data = await db.query(
-//     "SELECT * FROM users ORDER BY user_id DESC LIMIT 1"
-//   );
-//   return data.rows; // we have to use dot notation to get value of the rows property from the data object
-// }
+//2. GET /get-suggestions-by-category/:category
+async function getSuggestionsByCategory(category, feedback_title) {
+  const getSuggestionCategory = await db.query(
+    "SELECT * FROM suggestions WHERE category = '$1' ",
+    [category, feedback_title]
+  );
+  return getSuggestionCategory.rows;
+}
+
+//3. *POST /add-one-suggestion
+async function addOneSuggestion(feedback_title, category, feedback_detail) {
+  await db.query(
+    "INSERT INTO suggestions (feedback_title, category, feedback_detail) VALUES ($1, $2, $3)",
+    [feedback_title, category, feedback_detail]
+  );
+}
 
 /*----------------------------------
 API Endpoints
 ----------------------------------*/
 
 //-------------------------------------
-//📊 USERS
+//📊 Suggestions Helper Functions
 //-------------------------------------
-// //example
-// // 1. *GET /get-newest-user
 
-// app.get("/get-newest-user", async (req, res) => {
-//   const newestUser = await getNewestUser();
-//   res.json(newestUser);
-// });
+//1. *GET /get-all-suggestions
+app.get("/get-all-suggestions", async (req, res) => {
+  const allSuggestions = await getAllSuggestions();
+  res.json(allSuggestions);
+});
 
+//2. GET /get-suggestions-by-category/:category
+app.post("/get-suggestions-by-category/:category", async (req, res) => {
+  const category = req.params.category;
+
+  const { feedback_title } = req.body;
+
+  // If animalId or newCategory is missing, send back an error response (400 = bad request)
+  if (!category || !feedback_title) {
+    return res.status(400).send("Error: Missing required fields");
+  }
+  try {
+    const suggestionsByCategory = await getSuggestionsByCategory(
+      feedback_title,
+      category
+    );
+    return res.status(200).json({ suggestions: suggestionsByCategory });
+  } catch (error) {
+    // the next line logs the error to the console for debugging
+    console.error("Error in /get-suggestions-by-category endpoint:", error);
+
+    // the next line returns a 500 internal server error if something went wrong
+    return res
+      .status(500)
+      .send("Internal server error while getting suggestions by category");
+  }
+});
+
+//3. *POST /add-one-suggestion
+app.post("/add-one-suggestion", async (req, res) => {
+  const { feedback_title, category, feedback_detail } = req.body;
+  await addOneSuggestion(feedback_title, category, feedback_detail);
+  res.send(`Success! Your Suggestion was added.`);
+});
 /* 
 app.post("/update-one-animal-name-with-error-handling", async (req, res) => {
   try {
