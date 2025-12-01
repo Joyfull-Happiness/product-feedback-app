@@ -4,78 +4,124 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 
 ## Overview
 
-| Resource         | Method | Endpoint                      | Description                                           |
-|------------------|--------|-------------------------------|-------------------------------------------------------|
-| `suggestions`    | GET    | /get-all-suggestions          | ___________________                             |
-| `suggestions`    | GET    | /get-suggestions-by-category  | ___________________                             |
-| `suggestions`    | POST   | /add-one-suggestion           | ___________________                             |
+| Resource      | Method | Endpoint                     | Description                                                                            |
+| ------------- | ------ | ---------------------------- | -------------------------------------------------------------------------------------- |
+| `suggestions` | GET    | /get-all-suggestions         | `Retrieves all the suggestions from the database`                                      |
+| `suggestions` | GET    | /get-suggestions-by-category | `Retrieves all the suggestions from the database according to the category requested ` |
+| `suggestions` | POST   | /add-one-suggestion          | `Adds a new suggestion to the the database`                                            |
 
 ---
 
 ### 🔹 GET `/get-all-suggestions`
 
-**Description:** ___________________
-
-**Example Request URL:** 
+**Description:**
+`Retrieves all the suggestions from the database`
+**Example Request URL:**
 
 ```
-Write the example request URL here
+`/get-all-suggestions`
 ```
 
 **Example Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+
+[
+  {
+    "feedback_title": "Add tags for solutions",
+    "category": "Enhancement",
+    "feedback_detail": "Easier to search for solutions based on a specific stack."
+  },
+  {
+    "feedback_title": "Add a dark theme option",
+    "category": "Feature",
+    "feedback_detail": "It would help peopole with light sensitivities and who prefer dark mode."
+  },
+  {
+    "feedback_title": "Q&A within the challenege hubs",
+    "category": "Feature",
+    "feedback_detail": "Challenge Specific Q&A would make for easy reference"
+  }
+]
+
 ```
 
 ---
 
 ### 🔹 GET `/get-suggestions-by-category/:category`
 
-**Description:** ___________________
+**Description:**
+`Get a list of the suggestions with the same category`
 
-**Example Request URL:** 
+**Example Request URL:**
 
 ```
-Write the example request URL here
+`/get-suggestions-by-category/:category`
 ```
 
 **Example Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+
+[
+  {
+    "feedback_title": "Add a dark theme option",
+    "category": "Feature",
+    "feedback_detail": "It would help peopole with light sensitivities and who prefer dark mode."
+  },
+  {
+    "feedback_title": "Q&A within the challenege hubs",
+    "category": "Feature",
+    "feedback_detail": "Challenge Specific Q&A would make for easy reference"
+  }
+]
+
+
 ```
 
 ---
 
 ### 🔹 POST `/add-one-suggestion`
 
-**Description:** ___________________
+**Description:**
+`add a new suggestion to the category`
 
-**Example Request URL:** 
+**Example Request URL:**
 
 ```
+`/add-one-suggestion`
+```
+
 Write the example request URL here
+
 ```
 
 **Example Request Body:**
 
 ```
-Write the data required in the request body. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+
+[
+{
+"feedback_title": "Allow image/video upload",
+"category": "Enhancement",
+"feedback_detail": "Challenege-specific Q&A would make for easy reference"
+}
+]
+
 ```
 
 **Example Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+
+Success! Your suggestion is saved!
+
 ```
+
 ---
 
+```
+
+```
+
+```
