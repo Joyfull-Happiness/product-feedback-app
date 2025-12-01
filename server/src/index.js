@@ -75,29 +75,21 @@ app.get("/get-all-suggestions", async (req, res) => {
 
 //2. GET /get-suggestions-by-category/:category
 app.post("/get-suggestions-by-category/:category", async (req, res) => {
+  // the line below gets the category from the URL
   const category = req.params.category;
 
+  // the line below pulls the feedback_title from the request body
   const { feedback_title } = req.body;
 
-  // If animalId or newCategory is missing, send back an error response (400 = bad request)
-  if (!category || !feedback_title) {
-    return res.status(400).send("Error: Missing required fields");
-  }
-  try {
-    const suggestionsByCategory = await getSuggestionsByCategory(
-      feedback_title,
-      category
-    );
-    return res.status(200).json({ suggestions: suggestionsByCategory });
-  } catch (error) {
-    // the next line logs the error to the console for debugging
-    console.error("Error in /get-suggestions-by-category endpoint:", error);
+  // the line below calls the helper to fetch suggestions
+  const suggestionsByCategory = await getSuggestionsByCategory(
+    feedback_title,
+    category
+  );
 
-    // the next line returns a 500 internal server error if something went wrong
-    return res
-      .status(500)
-      .send("Internal server error while getting suggestions by category");
-  }
+  // the line below explains that the next line sends the list of matching suggestions
+  // back to the frontend as a JSON object so the client can display or use them
+  return res.json({ suggestions: suggestionsByCategory });
 });
 
 //3. *POST /add-one-suggestion
