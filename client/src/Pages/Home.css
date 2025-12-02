@@ -1,0 +1,54 @@
+.header {
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.header-top {
+  background: linear-gradient(90deg, #6ec3ff, #a24bff, #f3a183);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.header-brand h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.header-brand p {
+  margin: 2px 0 0 0;
+  opacity: 0.9;
+}
+
+.header-bottom {
+  background: #334066;
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.header-bottom h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.feedback-btn {
+  background: #a24bff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+.add-feedback-btn:hover {
+  opacity: 0.85;
+}

@@ -92,20 +92,16 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 `/add-one-suggestion`
 ```
 
-Write the example request URL here
-
-```
-
 **Example Request Body:**
 
 ```
 
 [
-{
-"feedback_title": "Allow image/video upload",
-"category": "Enhancement",
-"feedback_detail": "Challenege-specific Q&A would make for easy reference"
-}
+    {
+        "feedback_title": "Allow image/video upload",
+        "category": "Enhancement",
+        "feedback_detail": "Challenege-specific Q&A would make for easy reference"
+    }
 ]
 
 ```
@@ -115,13 +111,5 @@ Write the example request URL here
 ```
 
 Success! Your suggestion is saved!
-
-```
-
----
-
-```
-
-```
 
 ```
