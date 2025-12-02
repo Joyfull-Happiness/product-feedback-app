@@ -43,10 +43,10 @@ async function getAllSuggestions() {
 }
 
 //2. GET /get-suggestions-by-category/:category
-async function getSuggestionsByCategory(category, feedback_title) {
+async function getSuggestionsByCategory(category) {
   const getSuggestionCategory = await db.query(
-    "SELECT * FROM suggestions WHERE category = '$1' ",
-    [category, feedback_title]
+    "SELECT * FROM suggestions WHERE category = $1 ",
+    [category]
   );
   return getSuggestionCategory.rows;
 }
@@ -64,7 +64,7 @@ API Endpoints
 ----------------------------------*/
 
 //-------------------------------------
-//📊 Suggestions Helper Functions
+//📊 Suggestions
 //-------------------------------------
 
 //1. *GET /get-all-suggestions
@@ -74,18 +74,12 @@ app.get("/get-all-suggestions", async (req, res) => {
 });
 
 //2. GET /get-suggestions-by-category/:category
-app.post("/get-suggestions-by-category/:category", async (req, res) => {
+app.get("/get-suggestions-by-category/:category", async (req, res) => {
   // the line below gets the category from the URL
   const category = req.params.category;
 
-  // the line below pulls the feedback_title from the request body
-  const { feedback_title } = req.body;
-
   // the line below calls the helper to fetch suggestions
-  const suggestionsByCategory = await getSuggestionsByCategory(
-    feedback_title,
-    category
-  );
+  const suggestionsByCategory = await getSuggestionsByCategory(category);
 
   // the line below explains that the next line sends the list of matching suggestions
   // back to the frontend as a JSON object so the client can display or use them
