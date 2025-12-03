@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./home.css";
 import FeedbackCard from "../Components/FeedbackCard";
+// the next line defines the Home component which receives feedback data as a prop
 
 export default function Home() {
   // here i am creating a usestate to hold the suggestions list
@@ -17,9 +18,9 @@ export default function Home() {
     // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
     setSuggestions(allSuggestionsData);
   };
-  const filteredFeedback = suggestions.filter((oneSuggestion) => {
-    return oneSuggestion.category === selectedCategory;
-  });
+  // const filteredFeedback = suggestions.filter((oneSuggestion) => {
+  //   return oneSuggestion.category === selectedCategory;
+  // });
 
   useEffect(() => {
     getAllSuggestions();
@@ -46,8 +47,8 @@ export default function Home() {
 
       <main>
         <div className="card-container">
-          {filteredFeedback.map((oneFeedback, index) => (
-            <FeedbackCard key={index} feedback={oneFeedback} />
+          {suggestions.map((feedbackItem, index) => (
+            <FeedbackCard key={index} feedbackItem={feedbackItem} />
           ))}
         </div>
       </main>

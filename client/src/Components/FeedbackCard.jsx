@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-export default function FeedbackCard({ feedback }) {
+export default function FeedbackCard({ feedbackItem }) {
   return (
-    <Link className="all-links" to={`/country-detail/${country.name.common}`}>
-      <div className="FeedbackCard">
-        <article className="card">
-          <div className="card-body">
-            <p>{filter.toLocaleString("en-US")}</p>
-            <p>
-              <strong>{feedback_title}</strong>
-            </p>
-            <p>{feedback_detail}</p>
-            <p>{category}</p>
-          </div>
-        </article>
+    <div className="FeedbackCard">
+      <div className="card-body">
+        <p>
+          <strong>{feedbackItem.feedback_title}</strong>
+        </p>
+        <p>{feedbackItem.feedback_detail}</p>
+        <p>{feedbackItem.category}</p>
       </div>
-    </Link>
+    </div>
   );
 }
