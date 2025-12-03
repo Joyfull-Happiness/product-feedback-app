@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./feedback.css";
 
 export default function Feedback() {
@@ -9,7 +11,6 @@ export default function Feedback() {
   };
   // this holds the current state of the form inputs
   const [feedbackFormData, setFeedbackFormData] = useState(emptyFormState);
-
   // Step 1: Declare a new function called storeUserData() which should send a POST request to the APT to the /add-one-user endpoint
   // Step 2: Call the storeUserData() function on submit
 
@@ -32,15 +33,13 @@ export default function Feedback() {
   };
 
   // This line defines the change handler for all form inputs
-  const handleChange = (event) => {
-    // This line pulls the name and value from the input that triggered the event
-    const { name, value } = event.target;
-    // This line updates the formData state by copying previous values and changing just one field
-    setFormData((previousFormData) => ({
-      ...previousFormData,
-      [name]: value,
-    }));
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    // "..." is a spread operator which passes each item of the array in seperately
+    setFeedbackFormData({ ...feedbackFormData, [name]: value });
+    console.log("feedbackForm", feedbackFormData);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(feedbackFormData, "form was submitted");
@@ -70,14 +69,14 @@ export default function Feedback() {
             <input
               type="text"
               value={feedbackFormData.feedback_title}
-              onChange={(e) => setFeedbackFormData(e.target.value)}
+              onChange={handleInputChange}
             />
 
             <label>Category</label>
             <p className="field-hint">Choose a category for your feedback</p>
             <select
               value={feedbackFormData.category}
-              onChange={(e) => setFeedbackFormData(e.target.value)}
+              onChange={handleInputChange}
             >
               <option value="">Select...</option>
               <option value="Feature">Feature</option>
@@ -94,13 +93,14 @@ export default function Feedback() {
             <textarea
               rows="5"
               value={feedbackFormData.feedback_detail}
-              onChange={(e) => setFeedbackFormData(e.target.value)}
+              onChange={handleInputChange}
             ></textarea>
 
             <div className="form-buttons">
-              <button type="button" className="cancel-btn">
+              <Link to="/" className="cancel-btn">
                 Cancel
-              </button>
+              </Link>
+
               <button type="submit" className="add-btn">
                 Add Feedback
               </button>
