@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./feedback.css";
 
 export default function Feedback() {
   const emptyFormState = {
@@ -9,11 +10,6 @@ export default function Feedback() {
   // this holds the current state of the form inputs
   const [feedbackFormData, setFeedbackFormData] = useState(emptyFormState);
 
-  // Update the state when input values change
-  const handleInputChange = (e) => {
-    const { Feedback_title, category, feedback_detail } = e.target;
-    setFeedbackFormData({ ...formData, [Feedback_title]: value });
-  };
   // Step 1: Declare a new function called storeUserData() which should send a POST request to the APT to the /add-one-user endpoint
   // Step 2: Call the storeUserData() function on submit
 
@@ -34,9 +30,20 @@ export default function Feedback() {
       }),
     });
   };
+
+  // This line defines the change handler for all form inputs
+  const handleChange = (event) => {
+    // This line pulls the name and value from the input that triggered the event
+    const { name, value } = event.target;
+    // This line updates the formData state by copying previous values and changing just one field
+    setFormData((previousFormData) => ({
+      ...previousFormData,
+      [name]: value,
+    }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData, "form was submitted");
+    console.log(feedbackFormData, "form was submitted");
 
     // storing the form data into local storage:
     addOneSuggestion();
