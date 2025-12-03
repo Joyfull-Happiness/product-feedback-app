@@ -1,4 +1,106 @@
-//./Pages/Feedback.jsx
+import React, { useState } from "react";
+
 export default function Feedback() {
-  return <h1>Welcome to the Feedback</h1>;
+  const emptyFormState = {
+    feedback_title: "",
+    category: "",
+    feedback_detail: "",
+  };
+  // this holds the current state of the form inputs
+  const [feedbackFormData, setFeedbackFormData] = useState(emptyFormState);
+
+  // Update the state when input values change
+  const handleInputChange = (e) => {
+    const { Feedback_title, category, feedback_detail } = e.target;
+    setFeedbackFormData({ ...formData, [Feedback_title]: value });
+  };
+  // Step 1: Declare a new function called storeUserData() which should send a POST request to the APT to the /add-one-user endpoint
+  // Step 2: Call the storeUserData() function on submit
+
+  const addOneSuggestion = async () => {
+    // when we call the fetch() function, we only need to pass in the API url as one parameter when it's a GET request
+    // but hen we need to make a POST request, we have to pass in a second parameter: an object
+    await fetch("/api/add-one-suggestion", {
+      method: "POST", // we need to say we're sending a POST request because by default it's always a GET request
+      headers: {
+        // the headers is where we put metadata about our request, includeing the data type that we pass in the body
+        // in this case we are saying we're  passing in JSON data in the body
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        feeback_title: feedbackFormData.feedback_title,
+        categoryl: feedbackFormData.category,
+        feedback_detail: feedbackFormData.feedback_detail,
+      }),
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData, "form was submitted");
+
+    // storing the form data into local storage:
+    addOneSuggestion();
+
+    // reset the form to empty state
+    setFeedbackFormData(emptyFormState);
+  };
+
+  return (
+    <>
+      <div className="add-feedback-page">
+        <a href="/" className="go-back">
+          ← Go Back
+        </a>
+
+        <div className="add-feedback-card">
+          <div className="add-icon"></div>
+
+          <h2>Create New Feedback</h2>
+
+          <form onSubmit={handleSubmit} className="feedback-form">
+            <label>Feedback Title</label>
+            <p className="field-hint">Add a short, descriptive headline</p>
+            <input
+              type="text"
+              value={feedbackFormData.feedback_title}
+              onChange={(e) => setFeedbackFormData(e.target.value)}
+            />
+
+            <label>Category</label>
+            <p className="field-hint">Choose a category for your feedback</p>
+            <select
+              value={feedbackFormData.category}
+              onChange={(e) => setFeedbackFormData(e.target.value)}
+            >
+              <option value="">Select...</option>
+              <option value="Feature">Feature</option>
+              <option value="Enhancement">Enhancement</option>
+              <option value="UI">UI</option>
+              <option value="UX">UX</option>
+            </select>
+
+            <label>Feedback Detail</label>
+            <p className="field-hint">
+              Include any specific comments on what should be improved, added,
+              etc.
+            </p>
+            <textarea
+              rows="5"
+              value={feedbackFormData.feedback_detail}
+              onChange={(e) => setFeedbackFormData(e.target.value)}
+            ></textarea>
+
+            <div className="form-buttons">
+              <button type="button" className="cancel-btn">
+                Cancel
+              </button>
+              <button type="submit" className="add-btn">
+                Add Feedback
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
 }

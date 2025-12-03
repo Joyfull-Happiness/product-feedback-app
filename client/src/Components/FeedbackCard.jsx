@@ -8,7 +8,7 @@ export default function FeedbackCard({ feedbackItem }) {
           <strong>{feedbackItem.feedback_title}</strong>
         </p>
         <p>{feedbackItem.feedback_detail}</p>
-        <p>{feedbackItem.category}</p>
+        <span className="category-button">{feedbackItem.category}</span>
       </div>
     </div>
   );

@@ -11,6 +11,46 @@ body {
   flex-direction: column;
   gap: 24px;
 }
+
+.FeedbackCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 10px 30px rgba(55, 63, 104, 0.08);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+.card-body p strong {
+  font-size: 1.1rem;
+  color: #3f4e72;
+}
+
+.category-button {
+  padding: 8px 20px;
+  background-color: #f4f5ff;
+  color: #5a66d6;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  align-self: flex-start;
+}
+
+.category-button:hover {
+  background-color: #7d8eff;
+  color: white;
+  cursor: pointer;
+}
+
 .header {
   width: 100%;
   font-family: sans-serif;
