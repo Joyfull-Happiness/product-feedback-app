@@ -19,7 +19,7 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 **Example Request URL:**
 
 ```
-`/get-all-suggestions`
+http://localhost:3000/get-all-suggestions
 ```
 
 **Example Response:**
@@ -56,7 +56,7 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 **Example Request URL:**
 
 ```
-`/get-suggestions-by-category/:category`
+http://localhost:3000/get-suggestions-by-category/:category
 ```
 
 **Example Response:**
@@ -89,7 +89,8 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 **Example Request URL:**
 
 ```
-`/add-one-suggestion`
+http://localhost:3000/add-one-suggestion
+
 ```
 
 **Example Request Body:**
