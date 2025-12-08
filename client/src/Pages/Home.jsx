@@ -18,6 +18,9 @@ export default function Home() {
     // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
     setSuggestions(allSuggestionsData);
   };
+
+  // The next line counts how many suggestions exist using the length property
+  const totalCount = suggestions.length;
   // const filteredFeedback = suggestions.filter((oneSuggestion) => {
   //   return oneSuggestion.category === selectedCategory;
   // });
@@ -36,7 +39,13 @@ export default function Home() {
         </div>
 
         <div className="header-bottom">
-          <h2>2 suggestions</h2>
+          <div className="suggestions">
+            <img
+              src="./src/assets/suggestions/icon-suggestions.svg"
+              alt="add icon"
+            />
+            <span> {totalCount} Suggestions</span>
+          </div>
 
           <Link to="/feedback" className="feedback-btn">
             + Add Feedback

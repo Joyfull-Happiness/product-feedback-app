@@ -50,7 +50,14 @@ body {
   color: white;
   cursor: pointer;
 }
-
+.suggestions img {
+  align-items: center;
+}
+.suggestions span {
+  padding: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
 .header {
   width: 100%;
   font-family: sans-serif;

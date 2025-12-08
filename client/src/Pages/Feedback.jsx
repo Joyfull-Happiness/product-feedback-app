@@ -62,7 +62,7 @@ export default function Feedback() {
         <div className="add-feedback-card">
           <div className="add-icon">
             <img
-              src="../client/src/assets/icons/icon-new-feedback.svg"
+              src="./src/assets/icons/icon-new-feedback.svg"
               alt="add icon"
             />
           </div>

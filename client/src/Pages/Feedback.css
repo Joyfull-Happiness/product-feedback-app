@@ -7,10 +7,11 @@
 
 .go-back {
   display: inline-block;
-  margin-bottom: 20px;
-  color: #4661e6;
+  margin-bottom: 40px;
+  color: #3f4e72;
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .add-feedback-card {
@@ -21,11 +22,11 @@
 }
 
 .add-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6ec3ff, #a24bff, #f3a183);
+  margin-top: -60px;
   margin-bottom: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
 }
 
 .add-feedback-card h2 {
@@ -60,6 +61,7 @@
 
 .form-buttons {
   display: flex;
+  flex-direction: column;
   gap: 12px;
   margin-top: 30px;
 }
@@ -73,7 +75,7 @@
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  flex-direction: row;
+  text-align: center;
 }
 
 .add-btn {
@@ -84,4 +86,6 @@
   border: none;
   font-size: 1rem;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
