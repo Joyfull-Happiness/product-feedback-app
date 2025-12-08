@@ -20,13 +20,13 @@ export default function Feedback() {
     await fetch("/api/add-one-suggestion", {
       method: "POST", // we need to say we're sending a POST request because by default it's always a GET request
       headers: {
-        // the headers is where we put metadata about our request, includeing the data type that we pass in the body
+        // the headers is where we put metadata about our request, including the data type that we pass in the body
         // in this case we are saying we're  passing in JSON data in the body
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        feeback_title: feedbackFormData.feedback_title,
-        categoryl: feedbackFormData.category,
+        feedback_title: feedbackFormData.feedback_title,
+        category: feedbackFormData.category,
         feedback_detail: feedbackFormData.feedback_detail,
       }),
     });
@@ -38,6 +38,7 @@ export default function Feedback() {
     // "..." is a spread operator which passes each item of the array in seperately
     setFeedbackFormData({ ...feedbackFormData, [name]: value });
     console.log("feedbackForm", feedbackFormData);
+    console.log("FIELD NAME:", name);
   };
 
   const handleSubmit = (e) => {
@@ -59,7 +60,12 @@ export default function Feedback() {
         </a>
 
         <div className="add-feedback-card">
-          <div className="add-icon"></div>
+          <div className="add-icon">
+            <img
+              src="../client/src/assets/icons/icon-new-feedback.svg"
+              alt="add icon"
+            />
+          </div>
 
           <h2>Create New Feedback</h2>
 
@@ -68,6 +74,7 @@ export default function Feedback() {
             <p className="field-hint">Add a short, descriptive headline</p>
             <input
               type="text"
+              name="feedback_title"
               value={feedbackFormData.feedback_title}
               onChange={handleInputChange}
             />
@@ -75,6 +82,7 @@ export default function Feedback() {
             <label>Category</label>
             <p className="field-hint">Choose a category for your feedback</p>
             <select
+              name="category"
               value={feedbackFormData.category}
               onChange={handleInputChange}
             >
@@ -92,6 +100,7 @@ export default function Feedback() {
             </p>
             <textarea
               rows="5"
+              name="feedback_detail"
               value={feedbackFormData.feedback_detail}
               onChange={handleInputChange}
             ></textarea>
