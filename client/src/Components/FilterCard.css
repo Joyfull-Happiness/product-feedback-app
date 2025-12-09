@@ -1,0 +1,33 @@
+.filter-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: 720px;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.category-button {
+  padding: 8px 20px;
+  border-radius: 999px;
+  background-color: #f5f6ff;
+  color: #4661e6;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-button:hover {
+  background-color: #e0e5ff;
+}
+
+.category-button.active {
+  background-color: #4661e6;
+  color: #ffffff;
+}

@@ -1,11 +1,9 @@
 import React from "react";
-
+import "./FilterCard.css";
 export default function FilterCard({ filterItem }) {
   return (
-    <div className="FilterItemCard">
-      <div className="card-body">
-        <span className="category-button">{filterItem.category}</span>
-      </div>
+    <div className="filter-card">
+      <button className="category-button">{filterItem.category}</button>
     </div>
   );
 }

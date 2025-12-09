@@ -69,7 +69,7 @@ export default function Home() {
 
       <main>
         <div className="filter-container">
-          {selectedCategory.map((filterItem, index) => (
+          {suggestions.map((filterItem, index) => (
             <FilterCard key={index} filterItem={filterItem} />
           ))}
         </div>
