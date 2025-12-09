@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./home.css";
 import FeedbackCard from "../Components/FeedbackCard";
+import FilterCard from "../Components/FilterCard";
+
 // the next line defines the Home component which receives feedback data as a prop
 
 export default function Home() {
@@ -25,8 +27,19 @@ export default function Home() {
   //   return oneSuggestion.category === selectedCategory;
   // });
 
+  const getOneSuggestionByCategory = async () => {
+    // declare a variable that will hold the response from the GET request to API endpoint /get-all-saved-countries
+    const response = await fetch("/api/get-suggestions-by-category/:category");
+    // we're taking the raw data from the API and converting it into a js object
+    // the response.json() turns the response object into the data we can use in out JS code
+    const getOneSuggestionCategory = await response.json();
+    // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
+    setSelectedCategory(getOneSuggestionCategory);
+  };
+
   useEffect(() => {
     getAllSuggestions();
+    getOneSuggestionByCategory();
   }, []);
   return (
     <>
@@ -55,6 +68,11 @@ export default function Home() {
       </header>
 
       <main>
+        <div className="filter-container">
+          {selectedCategory.map((filterItem, index) => (
+            <FilterCard key={index} filterItem={filterItem} />
+          ))}
+        </div>
         <div className="card-container">
           {suggestions.map((feedbackItem, index) => (
             <FeedbackCard key={index} feedbackItem={feedbackItem} />
