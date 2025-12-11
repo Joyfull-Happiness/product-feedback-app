@@ -10,7 +10,6 @@ export default function Home() {
   // here i am creating a usestate to hold the suggestions list
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const categories = ["All", "UI", "UX", "Enhancement", "Feature"];
 
   const getAllSuggestions = async () => {
     // declare a variable that will hold the response from the GET request to API endpoint /get-all-saved-countries
@@ -36,17 +35,6 @@ export default function Home() {
     const getOneSuggestionCategory = await response.json();
     // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
     setSelectedCategory(getOneSuggestionCategory);
-  };
-  // below I am filtering suggestions based on the selected category
-  const filteredSuggestions = suggestions.filter((suggestion) => {
-    // below I am showing all suggestions if "All" is selected
-    if (selectedCategory === "All") return true;
-    // below I am keeping suggestions whose category matches the selectedCategory
-    return suggestion.category === selectedCategory;
-  });
-  // below I am updating the selectedCategory when a pill is clicked
-  const handleCategoryChange = (newCategory) => {
-    setSelectedCategory(newCategory);
   };
 
   useEffect(() => {
@@ -81,14 +69,9 @@ export default function Home() {
 
       <main>
         <div className="filter-container">
-          <FilterCard
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={handleCategoryChange}
-          />
-          {/* {suggestions.map((filterItem, index) => (
+          {suggestions.map((filterItem, index) => (
             <FilterCard key={index} filterItem={filterItem} />
-          ))} */}
+          ))}
         </div>
         <div className="card-container">
           {suggestions.map((feedbackItem, index) => (
