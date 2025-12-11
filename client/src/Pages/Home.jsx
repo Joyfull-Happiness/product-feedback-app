@@ -10,6 +10,8 @@ export default function Home() {
   // here i am creating a usestate to hold the suggestions list
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  // below I am defining the list of categories for the filter pills
+  const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   const getAllSuggestions = async () => {
     // declare a variable that will hold the response from the GET request to API endpoint /get-all-saved-countries
@@ -17,16 +19,31 @@ export default function Home() {
     // we're taking the raw data from the API and converting it into a js object
     // the response.json() turns the response object into the data we can use in out JS code
     const allSuggestionsData = await response.json();
-    // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
-    setSuggestions(allSuggestionsData);
+    // below I am making sure I only store an array in suggestions, falling back to an empty array if not
+
+    setSuggestions(Array.isArray(allSuggestionsData) ? allSuggestionsData : []);
   };
 
   // The next line counts how many suggestions exist using the length property
   const totalCount = suggestions.length;
-  // const filteredFeedback = suggestions.filter((oneSuggestion) => {
-  //   return oneSuggestion.category === selectedCategory;
-  // });
+  // below I am handling clicks from the filter pills
+  const handleCategoryChange = async (newCategory) => {
+    // below I am updating the active pill
+    setSelectedCategory(newCategory);
 
+    if (newCategory === "All") {
+      // below I am loading all cards again
+      fetchAllSuggestions();
+      return;
+    }
+
+    // below I am fetching only the category the user clicked
+    const response = await fetch(
+      `/api/get-suggestions-by-category/${newCategory}`
+    );
+    const allSuggestionsData = await response.json();
+    setSuggestions(Array.isArray(allSuggestionsData) ? allSuggestionsData : []);
+  };
   const getOneSuggestionByCategory = async () => {
     // declare a variable that will hold the response from the GET request to API endpoint /get-all-saved-countries
     const response = await fetch("/api/get-suggestions-by-category/:category");
@@ -36,7 +53,6 @@ export default function Home() {
     // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
     setSelectedCategory(getOneSuggestionCategory);
   };
-
   useEffect(() => {
     getAllSuggestions();
     getOneSuggestionByCategory();
@@ -69,9 +85,11 @@ export default function Home() {
 
       <main>
         <div className="filter-container">
-          {suggestions.map((filterItem, index) => (
-            <FilterCard key={index} filterItem={filterItem} />
-          ))}
+          <FilterCard
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
         </div>
         <div className="card-container">
           {suggestions.map((feedbackItem, index) => (

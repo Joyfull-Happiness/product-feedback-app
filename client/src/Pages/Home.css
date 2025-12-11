@@ -41,6 +41,7 @@ body {
   border-radius: 12px;
   font-weight: 600;
   font-size: 0.9rem;
+  border: none;
   transition: background-color 0.2s ease, color 0.2s ease;
   align-self: flex-start;
 }

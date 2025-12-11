@@ -91,6 +91,7 @@ export default function Feedback() {
               <option value="Enhancement">Enhancement</option>
               <option value="UI">UI</option>
               <option value="UX">UX</option>
+              <option value="Bug">Bug</option>
             </select>
 
             <label>Feedback Detail</label>
