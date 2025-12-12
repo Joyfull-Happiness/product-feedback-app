@@ -92,29 +92,3 @@ app.post("/add-one-suggestion", async (req, res) => {
   await addOneSuggestion(feedback_title, category, feedback_detail);
   res.send(`Success! Your Suggestion was added.`);
 });
-/* 
-app.post("/update-one-animal-name-with-error-handling", async (req, res) => {
-  try {
-    // Possible errors:
-    // DONE: 400 Bad Request: what should we do when there's no body?
-    // 500 Internal Server Error: when a unique constraint is violated
-    // 404 Resource Not Found: using camelCase for the api endpoint
-    // 404 Resource Not Found: no existing animal was found with the given id
-
-    const { country_name, count } = req.body;
-
-    // check for missing required fields in the request body: id and newName
-    if (!country_name || !count) {
-      // return error message with 400 Bad Request status code, because the request was badly formed with wrong syntax.
-      // All 4xx status codes are client-side errors, which means the client sent a bad request
-      return res.status(400).send("Error: Missing required fields");
-    }
-
-    await updateOneAnimalName(country_name, count);
-
-    res.send(`Success! ${country_name}'s count was updated.`);
-  } catch (error) {
-    res.status(500).send("Internal Server Error");
-  }
-});
-*/
