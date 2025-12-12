@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
   background-color: #f5f6ff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: Jost;
+}
+.suggestion_counter span {
+  font: 2rem;
 }
 .card-container {
   max-width: 720px;
@@ -51,8 +55,10 @@ body {
   color: white;
   cursor: pointer;
 }
-.suggestions img {
+.suggestions_img {
   align-items: center;
+  width: 300px;
+  height: 400px;
 }
 .suggestions span {
   padding: 1rem;
@@ -100,7 +106,7 @@ body {
 }
 
 .feedback-btn {
-  background: #a24bff;
+  background: #ad1fea;
   color: white;
   padding: 12px 25px;
   border-radius: 15px;
@@ -112,4 +118,53 @@ body {
 
 .add-feedback-btn:hover {
   opacity: 0.85;
+}
+
+.no-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.no-feedback-image {
+  width: 130px;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.no-feedback-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3a4374;
+  margin-bottom: 16px;
+}
+
+.no-feedback-text {
+  font-size: 16px;
+  color: #647196;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 400px;
+}
+
+.no-feedback-button {
+  background: #ad1fea;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.no-feedback-button:hover {
+  background: #c75af6;
 }

@@ -70,11 +70,16 @@ export default function Home() {
 
         <div className="header-bottom">
           <div className="suggestions">
-            <img
-              src="./src/assets/suggestions/icon-suggestions.svg"
-              alt="add icon"
-            />
-            <span> {totalCount} Suggestions</span>
+            <h2 className="suggestion_counter">
+              {" "}
+              <img
+                className=".suggestions_img"
+                src="./src/assets/suggestions/icon-suggestions.svg"
+                alt="add icon"
+              />{" "}
+              <span></span>
+              {totalCount} Suggestions
+            </h2>
           </div>
 
           <Link to="/feedback" className="feedback-btn">
@@ -93,11 +98,27 @@ export default function Home() {
         </div>
 
         <div className="card-container">
-          {suggestions.length === 0 && <p>No suggestions found</p>}
-
-          {suggestions.map((feedbackItem, index) => (
-            <FeedbackCard key={index} feedbackItem={feedbackItem} />
-          ))}
+          {suggestions.length === 0 ? (
+            <div className="no-feedback">
+              <img
+                src="./src/assets/suggestions/illustration-empty.svg"
+                alt="No feedback"
+                className="no-feedback-image"
+              />
+              <h2 className="no-feedback-title">There is no feedback yet.</h2>
+              <p className="no-feedback-text">
+                Got a suggestion? Found a bug that needs to be squashed? We love
+                hearing about new ideas to improve our app.
+              </p>
+              <Link to="/feedback" className="no-feedback-button">
+                + Add Feedback
+              </Link>
+            </div>
+          ) : (
+            suggestions.map((feedbackItem, index) => (
+              <FeedbackCard key={index} feedbackItem={feedbackItem} />
+            ))
+          )}
         </div>
       </main>
     </>
