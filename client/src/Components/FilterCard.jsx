@@ -1,5 +1,4 @@
 import React from "react";
-import "./FilterCard.css";
 export default function FilterCard({
   categories,
   selectedCategory,

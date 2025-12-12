@@ -86,9 +86,6 @@ export default function Home() {
             + Add Feedback
           </Link>
         </div>
-      </header>
-
-      <main>
         <div className="filter-container">
           <FilterCard
             categories={categories}
@@ -96,7 +93,9 @@ export default function Home() {
             onCategoryChange={handleCategoryChange}
           />
         </div>
+      </header>
 
+      <main>
         <div className="card-container">
           {suggestions.length === 0 ? (
             <div className="no-feedback">

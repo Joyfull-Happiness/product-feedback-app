@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
-
 body {
   background-color: #f5f6ff;
-  font-family: Jost;
 }
 .suggestion_counter span {
   font: 2rem;
@@ -66,8 +63,9 @@ body {
   text-align: center;
 }
 .header {
-  width: 100%;
-  font-family: sans-serif;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  padding: 16px;
 }
 
 .header-top {
@@ -93,9 +91,11 @@ body {
 .header-bottom {
   background: #334066;
   padding: 25px 20px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
+  background: #3a4374;
+  padding: 16px;
   color: white;
 }
 
@@ -103,6 +103,39 @@ body {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 700;
+}
+.filter-container {
+  background: white;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 3rem;
+}
+.filter-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 2rem;
+}
+.filter-card button {
+  background: #f2f4ff;
+  color: #4661e6;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 0.15rem;
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.filter-card button:hover {
+  background: #cfd7ff;
+}
+
+.filter-card button.active {
+  background: #4661e6;
+  color: white;
 }
 
 .feedback-btn {
@@ -167,4 +200,7 @@ body {
 
 .no-feedback-button:hover {
   background: #c75af6;
+}
+
+@media (min-width: 768px) {
 }
