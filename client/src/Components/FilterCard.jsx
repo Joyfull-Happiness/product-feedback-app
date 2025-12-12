@@ -12,7 +12,6 @@ export default function FilterCard({
       {categories.map((categoryName) => (
         <button
           key={categoryName}
-          // className={categoryName === selectedCategory}
           onClick={() => onCategoryChange(categoryName)}
           type="button"
         >

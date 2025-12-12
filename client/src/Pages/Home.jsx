@@ -4,59 +4,60 @@ import "./home.css";
 import FeedbackCard from "../Components/FeedbackCard";
 import FilterCard from "../Components/FilterCard";
 
-// the next line defines the Home component which receives feedback data as a prop
-
 export default function Home() {
-  // here i am creating a usestate to hold the suggestions list
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  // below I am defining the list of categories for the filter pills
+
   const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   const getAllSuggestions = async () => {
-    // declare a variable that will hold the response from the GET request to API endpoint /get-all-saved-countries
     const response = await fetch("/api/get-all-suggestions");
-    // we're taking the raw data from the API and converting it into a js object
-    // the response.json() turns the response object into the data we can use in out JS code
-    const allSuggestionsData = await response.json();
-    // below I am making sure I only store an array in suggestions, falling back to an empty array if not
+    const data = await response.json();
 
-    setSuggestions(Array.isArray(allSuggestionsData) ? allSuggestionsData : []);
+    console.log("Got all suggestions:", data);
+
+    // Check if your "all" endpoint returns the array directly or inside data.suggestions
+    // Try this first - if it doesn't work, change to: data.suggestions
+    setSuggestions(Array.isArray(data) ? data : []);
   };
 
-  // The next line counts how many suggestions exist using the length property
-  const totalCount = suggestions.length;
-  // below I am handling clicks from the filter pills
-  const handleCategoryChange = async (newCategory) => {
-    // below I am updating the active pill
+  const getSuggestionsByCategory = async (category) => {
+    const response = await fetch(
+      `/api/get-suggestions-by-category/${category}`
+    );
+    const data = await response.json();
+
+    console.log(`Got data for ${category}:`, data);
+
+    // The array is INSIDE data.suggestions!
+    setSuggestions(Array.isArray(data.suggestions) ? data.suggestions : []);
+  };
+
+  const handleCategoryChange = (newCategory) => {
+    // Add this console.log to see which button was clicked
+    console.log("Button clicked:", newCategory);
+
     setSelectedCategory(newCategory);
 
     if (newCategory === "All") {
-      // below I am loading all cards again
-      fetchAllSuggestions();
-      return;
+      getAllSuggestions();
+    } else {
+      getSuggestionsByCategory(newCategory);
     }
+  };
 
-    // below I am fetching only the category the user clicked
-    const response = await fetch(
-      `/api/get-suggestions-by-category/${newCategory}`
-    );
-    const allSuggestionsData = await response.json();
-    setSuggestions(Array.isArray(allSuggestionsData) ? allSuggestionsData : []);
-  };
-  const getOneSuggestionByCategory = async () => {
-    // declare a variable that will hold the response from the GET request to API endpoint /get-all-saved-countries
-    const response = await fetch("/api/get-suggestions-by-category/:category");
-    // we're taking the raw data from the API and converting it into a js object
-    // the response.json() turns the response object into the data we can use in out JS code
-    const getOneSuggestionCategory = await response.json();
-    // we are setting the savedcountries state and saving all of the data as an array of objects (it's already )
-    setSelectedCategory(getOneSuggestionCategory);
-  };
   useEffect(() => {
     getAllSuggestions();
-    getOneSuggestionByCategory();
   }, []);
+
+  // This useEffect watches for changes to suggestions
+  useEffect(() => {
+    console.log("Suggestions changed! Now showing:", suggestions);
+    console.log("Number of suggestions:", suggestions.length);
+  }, [suggestions]);
+
+  const totalCount = suggestions.length;
+
   return (
     <>
       <header className="header">
@@ -80,7 +81,6 @@ export default function Home() {
             + Add Feedback
           </Link>
         </div>
-        {/* notes */}
       </header>
 
       <main>
@@ -91,7 +91,10 @@ export default function Home() {
             onCategoryChange={handleCategoryChange}
           />
         </div>
+
         <div className="card-container">
+          {suggestions.length === 0 && <p>No suggestions found</p>}
+
           {suggestions.map((feedbackItem, index) => (
             <FeedbackCard key={index} feedbackItem={feedbackItem} />
           ))}
