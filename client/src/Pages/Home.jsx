@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import "./src/assets/suggestions/icon-suggestions.svg";
+import Suggestion from "../assets/suggestions/icon-suggestions.svg";
 import FeedbackCard from "../Components/FeedbackCard";
 import FilterCard from "../Components/FilterCard";
 
@@ -75,7 +75,7 @@ export default function Home() {
               {" "}
               <img
                 className=".suggestions_img"
-                src="./src/assets/suggestions/icon-suggestions.svg"
+                src={Suggestion}
                 alt="add icon"
               />{" "}
               <span></span>
