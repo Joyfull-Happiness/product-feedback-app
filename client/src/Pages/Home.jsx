@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import "./home.css";
+import "./Home.css";
 import FeedbackCard from "../Components/FeedbackCard";
 import FilterCard from "../Components/FilterCard";
 
