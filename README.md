@@ -1,61 +1,8 @@
 # 📝 Product Feedback App
 
-A well-written README helps others (and your future self!) understand, use, and appreciate your project. Here’s a quick guide to writing one.
-
-## 📌 What is a README?
-
-A `README.md` is usually the **first** thing someone sees in your repo. It gives an **overview** of what your **project** is about, how to use it, and how it works.
-
-You spent hours on your project — spend at least 30 minutes writing a clear README.
-It’s your chance to tell the world what your hard work is all about!
-
-## 🧹 Tips
-
-- Don’t overthink it! Just explain your project clearly
-- Use headers, bullet points, and links to keep it easy to read
-- Update the README if your project changes
-
-## ✨ Example of a README
-
-- Coming soon!
-
-## 🎨 Markdown Formatting Tips
-
-README files use **Markdown** (`.md`) to style content.
-
-### Common Markdown formatting:
-
-```markdown
-# H1 (Main title)
-
-## H2 (Section)
-
-### H3 (Subsection)
-
-**bold text**  
-_italic text_  
-`inline code`
-
-- bullet points
-
-1. numbered lists
-
-[Link text](https://example.com)
-
-![Alt text for image](./images/image.png)
-```
-
-# Fill Out the Template Below ⬇️
-
-Once you're done filling out the template, paste it into your Github repo's main `README.md` file!
-
----
-
-# 📝 Your Project's Title — Replace this with your app's name!
-
 ## 📌 Project Description & Purpose
 
-This project is \***\*\_\_\_\*\***
+\*The Product Feedback App is a full-stack project that lets users submit, view, and filter feedback suggestions. It’s built to mirror a real-world product feedback flow and highlight my ability to design APIs, manage data, and surface meaningful information through a simple, responsive UI.\*
 
 ## 🚀 Live Site
 
@@ -63,24 +10,14 @@ Check out the app: https://your-project.netlify.app
 
 ## 🖼️ Screenshots
 
-Here is where you'll include a screenshot of your project to show it off!
-
-Your instructor will walk you through this process with the rest of the class. Please be patient until the time comes! In the meantime, you can fill out all other sections of this template.
-
-1. Use `Command + Control + Shift + 4` to take a screenshot of your site and copy the screenshot to your clipboard
-2. Find your Github README.md file on the Github website
-3. Edit the site by clicking on the Pencil icon ✏️
-4. Move your cursor to the position where you want to paste the screenshot, then paste it. Github will convert the pasted screenshot into an `<img>` tag
-5. Select "Commit changes..." to save your changes
-
 ## ✨ Features
 
 This is what you can do on the app:
 
-- ***
-- ***
-- ***
-- ***
+- \*\*\* View all product feedback suggestions
+- \*\*\* Submit a new feedback suggestion through a form
+- \*\*\* Filter feedback by category to find relevant ideas
+- \*\*\* See real-time updates as new suggestions are added
 
 ## 🛠️ Tech Stack
 
@@ -111,30 +48,37 @@ These are the API endpoints I built:
 
 \*\*\* GET /get-all-suggestions
 
-Learn more about the API endpoints here: _**[insert link to API documentation]**_
+Learn more about the API endpoints here: _**[api-documentation.md]**_
 
 ## 🗄️ Database Schema
 
 Here’s the SQL I used to create my tables:
 
 ```sql
-Put your CREATE TABLE statements here!
-If you have more than one table, include them all.
+Select * FROM suggestions
+```
+
+```sql
+SELECT * FROM suggestions WHERE category = $1
+```
+
+```sql
+INSERT INTO suggestions (feedback_title, category, feedback_detail) VALUES ($1, $2, $3)
 ```
 
 ## 💭 Reflections
 
-**What I learned:** \***\*\_\_\_\*\***
+**What I learned:** **_How to design and connect full-stack features, work with APIs and databases, and structure clean, readable code that supports real product workflows._**
 
-**What I'm proud of:** \***\*\_\_\_\*\***
+**What I'm proud of:** **_Building a complete, working feedback system end to end—from the database and API to a responsive UI that surfaces meaningful data._**
 
-**What challenged me:** \***\*\_\_\_\*\***
+**What challenged me:** **_Debugging data flow across the stack and making sure filtering, submissions, and updates behaved consistently across different states._**
 
 **Future ideas for how I'd continue building this project:**
 
-1. ***
-2. ***
-3. ***
+1. **_Add user authentication and roles for submitting and managing feedback._**
+2. **_Improve filtering and sorting options (by date, popularity, or status)._**
+3. **_Add analytics or admin views to help teams track feedback trends over time._**
 
 ## 🙌 Credits & Shoutouts
 
