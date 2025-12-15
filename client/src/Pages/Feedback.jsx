@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Feedback.css";
-
+import AddIcon from "../assets/icons/icon-new-feedback.svg";
 export default function Feedback() {
   const emptyFormState = {
     feedback_title: "",
@@ -61,10 +61,7 @@ export default function Feedback() {
 
         <div className="add-feedback-card">
           <div className="add-icon">
-            <img
-              src="./src/assets/icons/icon-new-feedback.svg"
-              alt="add icon"
-            />
+            <img src={AddIcon} alt="add icon" />
           </div>
 
           <h2>Create New Feedback</h2>
