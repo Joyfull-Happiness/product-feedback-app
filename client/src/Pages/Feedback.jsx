@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import "./feedback.css";
+import "./Feedback.css";
 
 export default function Feedback() {
   const emptyFormState = {
