@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./Home.css";
+import "./src/assets/suggestions/icon-suggestions.svg";
 import FeedbackCard from "../Components/FeedbackCard";
 import FilterCard from "../Components/FilterCard";
 
