@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import Suggestion from "../assets/suggestions/icon-suggestions.svg";
+import SuggestionIcon from "../assets/suggestions/icon-suggestions.svg";
+import NoFeedbackIcon from "../assets/suggestions/illustration-empty.svg";
 import FeedbackCard from "../Components/FeedbackCard";
 import FilterCard from "../Components/FilterCard";
 
@@ -75,7 +76,7 @@ export default function Home() {
               {" "}
               <img
                 className=".suggestions_img"
-                src={Suggestion}
+                src={SuggestionIcon}
                 alt="add icon"
               />{" "}
               <span></span>
@@ -101,7 +102,7 @@ export default function Home() {
           {suggestions.length === 0 ? (
             <div className="no-feedback">
               <img
-                src="./src/assets/suggestions/illustration-empty.svg"
+                src={NoFeedbackIcon}
                 alt="No feedback"
                 className="no-feedback-image"
               />
