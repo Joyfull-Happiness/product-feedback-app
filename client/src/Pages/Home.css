@@ -62,10 +62,17 @@ body {
   font-weight: 700;
   text-align: center;
 }
-.header {
+.header-container {
   display: grid;
-  grid-template-rows: auto auto auto;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 16px;
+  grid-template-columns: repeat(0.5, 0.5fr);
+  grid-template-rows: repeat(0.5, 0.5fr 0.5gr 0.5fr 0.5fr);
+  grid-template-areas:
+    "header-top     header-top     header-top"
+    "header-bottom   header-bottom   header-bottom"
+    "filter   filter   filter";
 }
 
 .header-top {
@@ -75,6 +82,7 @@ body {
   justify-content: space-between;
   align-items: center;
   color: white;
+  grid-area: header-top;
 }
 
 .header-brand h1 {
@@ -97,6 +105,7 @@ body {
   background: #3a4374;
   padding: 16px;
   color: white;
+  grid-area: header-bottom;
 }
 
 .header-bottom h2 {
@@ -109,6 +118,7 @@ body {
   border-radius: 20px;
   padding: 1rem;
   margin-top: 3rem;
+  grid-area: filter;
 }
 .filter-card {
   display: flex;
@@ -200,4 +210,43 @@ body {
 
 .no-feedback-button:hover {
   background: #c75af6;
+}
+
+/* End Form CSS */
+
+@media (min-width: 700px) {
+  .header-container {
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: repeat(0.5, 0.5fr 0.5gr 0.5fr 0.5fr);
+    grid-template-areas:
+      "header-top     filter     ..."
+      "header-top   filter   ..."
+      "header-bottom    header-bottom    header-bottom ";
+    gap: 2rem;
+  }
+  .header-top {
+    border-radius: 10px;
+    margin-top: 3rem;
+  }
+  .header-bottom {
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header-container {
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: repeat(0.5, 0.5fr 0.5gr 0.5fr 0.5fr);
+    grid-template-areas:
+      "header-top     header-bottom     header-bottom"
+      "filter   ...   ..."
+      "...    ...   ...";
+    gap: 2rem;
+  }
+  .header-top {
+    border-radius: 10px;
+  }
+  .header-bottom {
+    border-radius: 10px;
+  }
 }

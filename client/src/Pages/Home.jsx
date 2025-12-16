@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="header">
+      <header className="header-container">
         <div className="header-top">
           <div className="header-brand">
             <h1>My Company</h1>
