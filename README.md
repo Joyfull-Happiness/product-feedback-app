@@ -9,6 +9,15 @@
 Check out the app: product-feedback-app-lajoie.netlify.app 
 ## 🖼️ Screenshots
 
+<img width="692" height="952" alt="Screenshot 2025-12-18 at 12 14 57 PM" src="https://github.com/user-attachments/assets/efe3ce75-7859-4941-8055-9a7554d436bc" />
+
+
+<img width="689" height="843" alt="Screenshot 2025-12-18 at 12 18 14 PM" src="https://github.com/user-attachments/assets/8fef01fe-0dae-41f7-bedc-8f3b9cc3d8bc" />
+
+
+<img width="696" height="704" alt="Screenshot 2025-12-18 at 12 18 20 PM" src="https://github.com/user-attachments/assets/fa359372-42a5-41ce-ae2f-d291befb8c47" />
+
+
 ## ✨ Features
 
 This is what you can do on the app:
