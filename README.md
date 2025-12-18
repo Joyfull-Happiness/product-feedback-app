@@ -48,7 +48,7 @@ These are the API endpoints I built:
 
 \*\*\* GET /get-all-suggestions
 
-Learn more about the API endpoints here: _**[product-feedback-app/api-documentation.md]**_
+Learn more about the API endpoints here: https://github.com/Joyfull-Happiness/product-feedback-app/blob/main/api-documentation.md 
 
 ## 🗄️ Database Schema
 
