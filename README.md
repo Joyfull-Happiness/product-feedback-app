@@ -6,8 +6,7 @@
 
 ## 🚀 Live Site
 
-Check out the app: https://your-project.netlify.app
-
+Check out the app: product-feedback-app-lajoie.netlify.app 
 ## 🖼️ Screenshots
 
 ## ✨ Features
