@@ -48,22 +48,19 @@ These are the API endpoints I built:
 
 \*\*\* GET /get-all-suggestions
 
-Learn more about the API endpoints here: _**[api-documentation.md]**_
+Learn more about the API endpoints here: _**[product-feedback-app/api-documentation.md]**_
 
 ## 🗄️ Database Schema
 
 Here’s the SQL I used to create my tables:
 
-```sql
-Select * FROM suggestions
 ```
-
-```sql
-SELECT * FROM suggestions WHERE category = $1
-```
-
-```sql
-INSERT INTO suggestions (feedback_title, category, feedback_detail) VALUES ($1, $2, $3)
+CREATE TABLE suggestions (
+  suggestions_id SERIAL PRIMARY KEY,
+  feedback_title VARCHAR NOT NULL,
+  category VARCHAR NOT NULL,
+  feedback_detail VARCHAR NOT NULL
+);
 ```
 
 ## 💭 Reflections
@@ -82,5 +79,5 @@ INSERT INTO suggestions (feedback_title, category, feedback_detail) VALUES ($1, 
 
 ## 🙌 Credits & Shoutouts
 
-Thanks to **\_\_\_\_** for \***\*\_\_\*\***!
-And thanks to **\_\_\_\_** for \***\*\_\_\*\***!
+Thanks to **Arianna** for veing an incredible instructor!
+And thanks to **Bakari and Makeba** for helping debug when needed!
